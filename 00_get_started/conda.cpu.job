@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name=mnist         # 指定作业名称
+#SBATCH --nodes=1                # 单节点运行，由于当前示例的程序不知道跨节点运行，这里节点数指定为 1
+#SBATCH --ntasks=1               # 每个节点的任务数
+#SBATCH --cpus-per-task=10       # 每个任务可使用的 CPU 核心数，如果是单线程任务这里应当指定为 1
+#SBATCH --mem=8G                 # 作业可使用的内存
+
+echo "Running on host" $(hostname)
+
+eval "$($HOME/anaconda3/bin/conda shell.bash hook)"
+conda activate pytorch
+
+srun python mnist.py --save-model --no-cuda
