@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#SBATCH --job-name=pytorch_pdd 
+#SBATCH --nodes=2 
+#SBATCH --ntasks-per-node=1  
+#SBATCH --cpus-per-task=1       
+#SBATCH --mem=4G
+
+echo "SLURMD_NODENAME=$SLURMD_NODENAME SLURM_JOB_GPUS=$SLURM_JOB_GPUS"
+
+eval "$($HOME/anaconda3/bin/conda shell.bash hook)"
+conda activate pytorch
+
+nodes=( $( scontrol show hostnames $SLURM_JOB_NODELIST ) )
+nodes_array=($nodes)
+head_node=${nodes_array[0]}
+head_node_ip=$(srun --nodes=1 --ntasks=1 -w "$head_node" hostname --ip-address)
+
+srun torchrun \
+--nnodes 2 \
+--nproc_per_node 1 \
+--rdzv_id $RANDOM \
+--rdzv_backend c10d \
+--rdzv_endpoint $head_node_ip:29500 \
+./mnist.py --save-model --epochs 20
