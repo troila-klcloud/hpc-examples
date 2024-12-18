@@ -74,5 +74,5 @@ export CUDA_VISIBLE_DEVICES=$SLURM_JOB_GPUS
 ### apptiner
 
     ```
-    $ sbatch --gres=gpu:2 apptainer.db.job
+    $ sbatch --gres=gpu:2 apptainer.dp.job
     ```
