@@ -41,17 +41,6 @@
     model = Net().to(device)
 ```
 
-## 作业脚本改动
-
-本示例的作业脚本为：apptainer.db.job 和 conda.dp.job，相对于 [00_get_started 的作业脚本](../00_get_started/conda.gpu.job)，只添加了一行代码：
-
-```bash
-export CUDA_VISIBLE_DEVICES=$SLURM_JOB_GPUS
-```
-
-* SLURM_JOB_GPUS 参考[官方文档](https://slurm.schedmd.com/sbatch.html#OPT_SLURM_JOB_GPUS)，slurm 通过这个变量告诉作业该使用哪些 GPU。
-* CUDA_VISIBLE_DEVICES 通过这个变量，告诉 pytorch 程序该使用哪些 GPU
-
 ## 准备
 
 参考 [00_get_started](../00_get_started/README.md)：
