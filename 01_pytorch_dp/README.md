@@ -62,6 +62,8 @@
 
 ### apptiner
 
+**注意：** 需要做好[提前准备工作](../00_get_started/README.md#提前准备)。如果你在测试 [00_get_started](../00_get_started/README.md) 示例时已经做了这些工作，你可以直接复制 `pytorch-24.01.sif` 到本目录。
+
     ```
     $ sbatch --gres=gpu:2 apptainer.dp.job
     ```

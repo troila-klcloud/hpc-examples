@@ -79,11 +79,21 @@ Sharding 模式共享 GPU。Sharding 模式不需要特定 GPU 支持，支持�
 
 ### 提前准备
 
-提前拉取镜像对缩短作业运行时长，提高资源使用效率有极大的帮助。
+为缩短训练时间，提高训练效率。我们需要做一些提前准备工作，这些工作都是一次性的。提前做好这些工作能避免每次占用作业时间（作业在运行时会锁定资源，这些工作如果在作业脚本里完成，会导致资源长时间被一个作业锁定）。
+
+#### 拉取镜像
 
     ```
     $ apptainer pull docker://registry.cn-hangzhou.aliyuncs.com/troila-klcloud/pytorch:24.01-py3
     ```
+
+#### 转换 dokcer 镜像
+
+    ```
+    $ apptainer build pytorch-24.01.sif docker://registry.cn-hangzhou.aliyuncs.com/troila-klcloud/pytorch:24.01-py3
+    ```
+
+这一步把 docker 镜像转为 apptainer 镜像，转换完成后会发现当前目录（执行命令的目录）下多了一个 `pytorch-24.01.sif` 文件。
 
 ### 提交作业，使用 CPU 运行
 

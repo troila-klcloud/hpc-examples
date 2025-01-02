@@ -5,4 +5,4 @@
 #SBATCH --cpus-per-task=1        # 每个任务可使用的 CPU 核心数，如果是单线程任务这里应当指定为 1。GPU 运行作业时，CPU 只起到辅助作业，所以 1 个 CPU 足够使用
 #SBATCH --mem=2G                 # 作业可使用的内存。GPU 运行作业，主要消耗 GPU 显存，内存不需要太多
 
-srun apptainer exec --nv docker://registry.cn-hangzhou.aliyuncs.com/troila-klcloud/pytorch:24.01-py3 python mnist.py --save-model
+srun apptainer exec --nv pytorch-24.01.sif python mnist.py --save-model
