@@ -27,6 +27,26 @@
     $ conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
     ```
 
+####（可选）配置功能下载源
+
+`pytorch` 官方的下载源在国外，有时候下载会很慢，可以配置清华源下载
+
+    ```
+    $ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+    $ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+    $ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+    ```
+
+下载：
+
+    ```
+    $ conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c nvidia
+    ```
+
+**注意：** 上面只是把 pytorch 的下载源改为了国内，CUDA 的下载源依然是 nvidia (暂无找到国内 nvidia cuda 源)
+
+#### （可选）通过 pip 安装依赖包
+
 创建好环境后，也可以通过 pip 安装依赖包：
 
     ```
