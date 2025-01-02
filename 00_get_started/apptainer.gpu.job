@@ -8,4 +8,4 @@
 echo "Running on host" $(hostname)
 
 
-srun apptainer exec --nv docker://registry.cn-hangzhou.aliyuncs.com/troila-klcloud/pytorch:24.01-py3 python mnist.py --save-model --epochs 1000
+srun apptainer exec --nv pytorch-24.01.sif python mnist.py --save-model --epochs 10
