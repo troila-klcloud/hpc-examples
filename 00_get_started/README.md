@@ -82,7 +82,7 @@ Sharding 模式共享 GPU。Sharding 模式不需要特定 GPU 支持，支持�
 提前拉取镜像对缩短作业运行时长，提高资源使用效率有极大的帮助。
 
     ```
-    $ apptainer pull docker://nvcr.io/nvidia/pytorch:24.01-py3
+    $ apptainer pull docker://registry.cn-hangzhou.aliyuncs.com/troila-klcloud/pytorch:24.01-py3
     ```
 
 ### 提交作业，使用 CPU 运行
