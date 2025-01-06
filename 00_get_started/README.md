@@ -27,7 +27,7 @@
     $ conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
     ```
 
-####（可选）配置功能下载源
+#### （可选）配置国内下载源
 
 `pytorch` 官方的下载源在国外，有时候下载会很慢，可以配置清华源下载
 
